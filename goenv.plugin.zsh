@@ -17,7 +17,7 @@ fi
 
 if [[ $FOUND_GOENV -eq 1 ]]; then
     (( $+commands[goenv] )) || export PATH="${goenvdir}/bin:$PATH"
-    eval "$(goenv init - zsh)"
+    eval "$(goenv init -)"
 
     function goenv_prompt_info() {
       local version="$(goenv version-name 2>/dev/null)"
