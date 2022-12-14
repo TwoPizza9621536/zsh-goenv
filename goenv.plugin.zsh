@@ -27,6 +27,8 @@ if [[ $FOUND_GOENV -eq 1 ]]; then
     if [[ -d "${goenvdir}/versions" ]]; then
         export GOENV_ROOT=$goenvdir
     fi
+
+    export PATH=$GOROOT/bin:$PATH:$GOPATH/bin
 else
     function goenv_prompt_info() {
       local version="$(go version | cut -d' ' -f3)"
