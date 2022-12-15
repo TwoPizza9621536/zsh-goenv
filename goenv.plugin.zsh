@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-goenvdirs=("$HOME/.goenv" "/usr/local/bin/goenv" "/usr/local/goenv" "/opt/goenv")
+goenvdirs=("$HOME/.goenv" "$XDG_DATA_HOME/goenv" "/usr/local/bin/goenv" "/usr/local/goenv" "/opt/goenv")
 
 FOUND_GOENV=0
 for goenvdir in $goenvdirs; do
@@ -27,8 +27,6 @@ if [[ $FOUND_GOENV -eq 1 ]]; then
     if [[ -d "${goenvdir}/versions" ]]; then
         export GOENV_ROOT=$goenvdir
     fi
-
-    export PATH=$GOROOT/bin:$PATH:$GOPATH/bin
 else
     function goenv_prompt_info() {
       local version="$(go version | cut -d' ' -f3)"
